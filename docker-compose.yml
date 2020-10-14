@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+
+    api:
+        image: app-api
+        build: 
+            context: ./API/
+            target: debug
+        ports:
+            - 3000:3000
+            - 9229:9229
+        volumes: 
+            - ./API/src:/work/src
+            - api_modules:/work/node_modules
+    
+    postgresql:
+        image: postgres
+        environment: 
+            POSTGRES_USER: master
+            POSTGRES_PASSWORD: test
+        volumes: 
+            - ./DB/initdb:/docker-entrypoint-initdb.d/
+     
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+           - 8080:8080
+
+volumes:
+    api_modules:
+    
