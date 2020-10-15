@@ -1,4 +1,4 @@
-FROM node:12.4.0-buster as debug
+FROM node:12.4.0-alpine as debug
 
 WORKDIR /work/
 
