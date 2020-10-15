@@ -21,6 +21,7 @@ services:
             POSTGRES_PASSWORD: test
         volumes: 
             - ./DB/initdb:/docker-entrypoint-initdb.d/
+            - database:/var/lib/postgresql/data 
      
     adminer:
         image: adminer
@@ -30,4 +31,5 @@ services:
 
 volumes:
     api_modules:
+    database:
     
